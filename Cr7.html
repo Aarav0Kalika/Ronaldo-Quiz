@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ronaldo Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #020617, #1d4ed8, #0f172a);
+      color: #f8fafc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .quiz-box {
+      background: rgba(15, 23, 42, 0.95);
+      padding: 28px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 700px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      color: #fbbf24;
+      font-size: 30px;
+    }
+    .subtitle {
+      color: #cbd5e1;
+      font-size: 14px;
+      margin: 0;
+    }
+    .question {
+      margin-bottom: 18px;
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+    }
+    .question p {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .options label {
+      display: block;
+      margin: 8px 0;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.06);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .options label:hover {
+      background: rgba(251, 191, 36, 0.2);
+    }
+    button {
+      margin-top: 10px;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+      color: #111827;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    button:hover {
+      transform: translateY(-1px);
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #86efac;
+      font-size: 18px;
+      min-height: 24px;
+    }
+    .correct-answer::before {
+      content: '✓ ';
+      color: #86efac;
+      font-weight: bold;
+    }
+    .answer-list {
+      margin-top: 15px;
+      padding: 12px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    .answer-list .correct {
+      color: #86efac;
+    }
+    .answer-list .wrong {
+      color: #fca5a5;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-box">
+    <div class="header">
+      <h1>⚽ Ronaldo Quiz</h1>
+      <p class="subtitle">Test your knowledge about the football legend</p>
+    </div>
+
+    <form id="quizForm">
+      <div class="question">
+        <p>1. What is Cristiano Ronaldo's full name?</p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="A" /> Cristiano Ronaldo dos Santos Aveiro</label>
+          <label><input type="radio" name="q1" value="B" /> Cristiano Alves Pereira</label>
+          <label><input type="radio" name="q1" value="C" /> Cristiano Mendes</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>2. Which country does Ronaldo represent internationally?</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="A" /> Brazil</label>
+          <label><input type="radio" name="q2" value="B" /> Portugal</label>
+          <label><input type="radio" name="q2" value="C" /> Argentina</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>3. How many Ballon d'Or awards has Ronaldo won?</p>
+        <div class="options">
+          <label><input type="radio" name="q3" value="A" /> 4</label>
+          <label><input type="radio" name="q3" value="B" /> 5</label>
+          <label><input type="radio" name="q3" value="C" /> 6</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>4. Which club did Ronaldo join in 2021?</p>
+        <div class="options">
+          <label><input type="radio" name="q4" value="A" /> Manchester United</label>
+          <label><input type="radio" name="q4" value="B" /> Barcelona</label>
+          <label><input type="radio" name="q4" value="C" /> PSG</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>5. What is Ronaldo's famous nickname?</p>
+        <div class="options">
+          <label><input type="radio" name="q5" value="A" /> CR7</label>
+          <label><input type="radio" name="q5" value="B" /> Leo</label>
+          <label><input type="radio" name="q5" value="C" /> Messi</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>6. In which year was Cristiano Ronaldo born?</p>
+        <div class="options">
+          <label><input type="radio" name="q6" value="A" /> 1983</label>
+          <label><input type="radio" name="q6" value="B" /> 1984</label>
+          <label><input type="radio" name="q6" value="C" /> 1985</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>7. Which was Ronaldo's first major club outside Portugal?</p>
+        <div class="options">
+          <label><input type="radio" name="q7" value="A" /> Manchester United</label>
+          <label><input type="radio" name="q7" value="B" /> Real Madrid</label>
+          <label><input type="radio" name="q7" value="C" /> Chelsea</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>8. How many international goals has Ronaldo scored (as of 2024)?</p>
+        <div class="options">
+          <label><input type="radio" name="q8" value="A" /> 115</label>
+          <label><input type="radio" name="q8" value="B" /> 125</label>
+          <label><input type="radio" name="q8" value="C" /> 135</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>9. Which award did Ronaldo win in 2008?</p>
+        <div class="options">
+          <label><input type="radio" name="q9" value="A" /> FIFA World Player of the Year</label>
+          <label><input type="radio" name="q9" value="B" /> The Best FIFA Men's Player</label>
+          <label><input type="radio" name="q9" value="C" /> UEFA Player of the Year</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>10. What is Ronaldo's jersey number at Manchester United (first stint)?</p>
+        <div class="options">
+          <label><input type="radio" name="q10" value="A" /> 7</label>
+          <label><input type="radio" name="q10" value="B" /> 9</label>
+          <label><input type="radio" name="q10" value="C" /> 11</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>11. Which club did Ronaldo play for before joining Real Madrid?</p>
+        <div class="options">
+          <label><input type="radio" name="q11" value="A" /> Manchester United</label>
+          <label><input type="radio" name="q11" value="B" /> Barcelona</label>
+          <label><input type="radio" name="q11" value="C" /> Liverpool</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>12. What is the name of Ronaldo's long-time rival from Argentina?</p>
+        <div class="options">
+          <label><input type="radio" name="q12" value="A" /> Neymar</label>
+          <label><input type="radio" name="q12" value="B" /> Lionel Messi</label>
+          <label><input type="radio" name="q12" value="C" /> Kylian Mbappé</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>13. Which country hosted the 2018 FIFA World Cup?</p>
+        <div class="options">
+          <label><input type="radio" name="q13" value="A" /> Brazil</label>
+          <label><input type="radio" name="q13" value="B" /> Russia</label>
+          <label><input type="radio" name="q13" value="C" /> Qatar</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>14. Which club did Ronaldo win the UEFA Champions League with in 2008?</p>
+        <div class="options">
+          <label><input type="radio" name="q14" value="A" /> Barcelona</label>
+          <label><input type="radio" name="q14" value="B" /> Manchester United</label>
+          <label><input type="radio" name="q14" value="C" /> Inter Milan</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>15. What is Ronaldo's favorite playing position?</p>
+        <div class="options">
+          <label><input type="radio" name="q15" value="A" /> Striker</label>
+          <label><input type="radio" name="q15" value="B" /> Midfielder</label>
+          <label><input type="radio" name="q15" value="C" /> Goalkeeper</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>16. Which club did Ronaldo win the UEFA Champions League with in 2016?</p>
+        <div class="options">
+          <label><input type="radio" name="q16" value="A" /> Real Madrid</label>
+          <label><input type="radio" name="q16" value="B" /> Juventus</label>
+          <label><input type="radio" name="q16" value="C" /> Liverpool</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>17. Which city is Ronaldo from?</p>
+        <div class="options">
+          <label><input type="radio" name="q17" value="A" /> Funchal</label>
+          <label><input type="radio" name="q17" value="B" /> Lisbon</label>
+          <label><input type="radio" name="q17" value="C" /> Porto</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>18. Which club did Ronaldo first sign for as a professional?</p>
+        <div class="options">
+          <label><input type="radio" name="q18" value="A" /> Sporting CP</label>
+          <label><input type="radio" name="q18" value="B" /> Benfica</label>
+          <label><input type="radio" name="q18" value="C" /> Porto</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>19. How many UEFA Champions League titles has Ronaldo won?</p>
+        <div class="options">
+          <label><input type="radio" name="q19" value="A" /> 5</label>
+          <label><input type="radio" name="q19" value="B" /> 4</label>
+          <label><input type="radio" name="q19" value="C" /> 6</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>20. Which team won Euro 2016?</p>
+        <div class="options">
+          <label><input type="radio" name="q20" value="A" /> France</label>
+          <label><input type="radio" name="q20" value="B" /> Portugal</label>
+          <label><input type="radio" name="q20" value="C" /> Spain</label>
+        </div>
+      </div>
+
+      <button type="button" onclick="checkAnswers()">Submit Quiz</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'A',
+        q2: 'B',
+        q3: 'B',
+        q4: 'A',
+        q5: 'A',
+        q6: 'C',
+        q7: 'A',
+        q8: 'B',
+        q9: 'A',
+        q10: 'A',
+        q11: 'A',
+        q12: 'B',
+        q13: 'B',
+        q14: 'B',
+        q15: 'A',
+        q16: 'A',
+        q17: 'A',
+        q18: 'A',
+        q19: 'A',
+        q20: 'B'
+      };
+
+      let score = 0;
+      const questionCount = Object.keys(answers).length;
+      const details = [];
+
+      for (const [key, value] of Object.entries(answers)) {
+        const selected = document.querySelector(`input[name="${key}"]:checked`);
+        const questionNum = key.substring(1);
+        if (selected && selected.value === value) {
+          score++;
+          details.push(`<span class="correct">✓ Q${questionNum}: Correct (${value})</span>`);
+        } else {
+          const userAnswer = selected ? selected.value : 'Not answered';
+          details.push(`<span class="wrong">✗ Q${questionNum}: Wrong (You selected: ${userAnswer}, Correct: ${value})</span>`);
+        }
+      }
+
+      const result = document.getElementById('result');
+      let message = '';
+      
+      if (score === questionCount) {
+        result.style.color = '#fde68a';
+        message = `🏆 Perfect Score! You got ${score}/${questionCount} correct!`;
+      } else if (score >= Math.ceil(questionCount * 0.7)) {
+        result.style.color = '#86efac';
+        message = `👏 Great job! You scored ${score}/${questionCount}.`;
+      } else {
+        result.style.color = '#fca5a5';
+        message = `😅 Keep practicing! You scored ${score}/${questionCount}.`;
+      }
+      
+      result.innerHTML = message + '<div class="answer-list">' + details.join('<br>') + '</div>';
+    }
+  </script>
+</body>
+</html>
